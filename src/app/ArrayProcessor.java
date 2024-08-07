@@ -54,15 +54,24 @@ public class ArrayProcessor {
     }
 
     public static void main(String[] args) {
-        // Створення масиву, виведення не сортованого
+        // Створення масиву
         int[] array = {9, 3, 7, 1, 5, 2, 8, 4, 6};
-        System.out.println("Масив перед сортуванням: " + Arrays.toString(array));
+//        int[] array = {};
 
-        // Сортування масиву, виведення
-        quickSort(array);
-        System.out.println("Відсортований масив: " + Arrays.toString(array));
+        // Тестування масиву на порожнє значення, швидке сортування, виведення результату
+        Optional<int[]> sortResult = Optional.of(array);
+        if (sortResult.isPresent()) {
+            // Якщо не порожній, виведення не сортованого масиву
+            System.out.println("Масив перед сортуванням: " + Arrays.toString(array));
+            // Сортування, виведення відсортованого масиву
+            quickSort(array);
+            System.out.println("Відсортований масив: " + Arrays.toString(array));
+        } else {
+            // Якщо порожній, виведення повідомлення про це
+            System.out.println("Масив порожній");
+        }
 
-        // Пошук елемента у відсортованому масиві, виведення результату
+        // Лінійний пошук у відсортованому масиві з тестуванням відсутності елемента, виведення результату
         int target = 5;
         Optional<Integer> result = linearSearch(array, target);
         if (result.isPresent()) {
